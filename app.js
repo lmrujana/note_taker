@@ -66,11 +66,24 @@ app.post("/api/notes", (req, res) => {
     let newNote = req.body
     giveId(json_data, newNote);
     json_data.push(newNote);
-    fs.writeFile(dbPath, JSON.stringify(json_data), (err) => err ? console.log(err) : console.log("New note created!"))
+    fs.writeFile(dbPath, JSON.stringify(json_data), (err) => err ? console.log(err) : console.log("New note created!"));
 
     // console.log(json_data);
-    res.json(true)
+    res.send("Got a POST request");
 });
+
+app.delete("/api/notes/:id", (req, res) => {
+    // console.log(req.params.id);
+    let idSelected = req.params.id;
+    let noteSelected = json_data.find(note =>{
+        note.id === idSelected;
+    });
+    let indexOfNote = json_data.indexOf(noteSelected);
+    json_data.splice(indexOfNote, 1);
+
+    fs.writeFile(dbPath, JSON.stringify(json_data), (err) => err ? console.log(err) : console.log(`Note with id:${idSelected} deleted`))
+    res.send("Got a DELETE request")
+})
 
 
 
