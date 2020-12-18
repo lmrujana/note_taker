@@ -24,6 +24,8 @@
 
   ![Notes Page](assets/notes_screenshot.png)
 
+  Here's a link to the deployed app in Heroku: [Note Taker](https://cryptic-shelf-27313.herokuapp.com/)
+
   ## License
   For more information on the license for this project, please click on the following link:
   [License](https://opensource.org/licenses/Apache-2.0)
